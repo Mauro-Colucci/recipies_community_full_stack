@@ -28,6 +28,7 @@ const recipeSchema = new mongoose.Schema({
   },
 });
 
+//indexing to perform searches on those fields (name and desc)
 recipeSchema.index({ name: 'text', description: 'text' });
 // WildCard Indexing
 //recipeSchema.index({ "$**" : 'text' });

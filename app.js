@@ -1,7 +1,11 @@
 const express = require('express')
-const expressLayouts = require('express-ejs-layouts');
 require('dotenv').config()
 const mongoose = require('mongoose')
+const fileUpload = require('express-fileupload')
+const session = require('express-session')
+const flash = require('connect-flash')
+//this one should be deprecated inside express-session . check docs
+const cookieParser = require('cookie-parser')
 
 const app = express()
 const routes = require('./server/routes/recipeRoutes.js')
@@ -20,11 +24,18 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(cookieParser('CookingBlogSecure'))
+app.use(session({
+    secret: "use a secret key of whatever",
+    saveUninitialized: true,
+    resave: true
+}))
+app.use(flash())
+app.use(fileUpload())
+
 app.use('/', routes)
 
-//check if needed, since you can include partial sections in ejes with <%- include('layout/header') %>
-/* app.use(expressLayouts)
-app.set('layout', './layouts/main') */
+
 
 
 app.listen(PORT, ()=> {

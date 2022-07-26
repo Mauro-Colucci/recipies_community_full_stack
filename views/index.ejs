@@ -13,7 +13,7 @@
         </p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
             <a href="/explore-latest" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">Explore Latest</a>
-            <a href="/random-recipe" class="btn btn-outline-secondary btn-lg px-4 me-md-2">Surprise Me!</a>
+            <a href="/explore-random" class="btn btn-outline-secondary btn-lg px-4 me-md-2">Surprise Me!</a>
         </div>
     </div>
 </div>
@@ -54,7 +54,7 @@
             <% food.latest.forEach(recipe => { %>
                 <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
                     <div class="category__img category__img--large shadow">
-                        <img src="img/<%= recipe.image %> " loading="lazy" alt="<%= recipe.name %>">
+                        <img src="uploads/<%= recipe.image %> " loading="lazy" alt="<%= recipe.name %>">
                     </div>
                     <div class="pt-1"><%= recipe.name %></div>
                 </a>
@@ -62,6 +62,82 @@
         <% } %>  
     </div>
 </section>
+
+
+
+<!-- we could do the same for other food categories -->
+<section class="pb-4 pt-4">
+    <div class="d-flex mb-2 align-items-center">
+        <h2>Thai Recipes</h2>
+        <a href="/categories/thai" class="ms-auto">View More</a>
+    </div>
+
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+
+        <% if (typeof food.thai !== 'undefined' && food.thai.length>0) { %>
+            <% food.thai.forEach(recipe => { %>
+                <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
+                    <div class="category__img category__img--large shadow">
+                        <img src="img/<%= recipe.image %> " loading="lazy" alt="<%= recipe.name %>">
+                    </div>
+                    <div class="pt-1"><%= recipe.name %></div>
+                </a>
+            <% }) %>
+        <% } else { %>  
+                <p>No items found</p>
+            <% } %> 
+    </div>
+</section>
+
+<section class="pb-4 pt-4">
+    <div class="d-flex mb-2 align-items-center">
+        <h2>American Recipes</h2>
+        <a href="/categories/american" class="ms-auto">View More</a>
+    </div>
+
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+
+        <% if (typeof food.american !== 'undefined' && food.american.length>0) { %>
+            <% food.american.forEach(recipe => { %>
+                <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
+                    <div class="category__img category__img--large shadow">
+                        <img src="img/<%= recipe.image %> " loading="lazy" alt="<%= recipe.name %>">
+                    </div>
+                    <div class="pt-1"><%= recipe.name %></div>
+                </a>
+            <% }) %>
+        <% } else { %>  
+            <p>No items found</p>
+            <% } %> 
+    </div>
+</section>
+
+<section class="pb-4 pt-4">
+    <div class="d-flex mb-2 align-items-center">
+        <h2>Chinese Recipes</h2>
+        <a href="/categories/chinese" class="ms-auto">View More</a>
+    </div>
+
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+
+        <% if (typeof food.chinese !== 'undefined' && food.chinese.length>0) { %>
+            <% food.chinese.forEach(recipe => { %>
+                <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
+                    <div class="category__img category__img--large shadow">
+                        <img src="img/<%= recipe.image %> " loading="lazy" alt="<%= recipe.name %>">
+                    </div>
+                    <div class="pt-1"><%= recipe.name %></div>
+                </a>
+            <% }) %>
+        <% } else { %>  
+            <p>No items found</p>
+            <% } %> 
+    </div>
+</section>
+
+
+
+
 
 <section class="px-4 py-5 my-5 text-center">
     <img src="img/publish-recipe.png" class="d-block mx-auto mb-4 img-fluid" alt="publish your recipe today!" width="566" height="208" loading="lazy">

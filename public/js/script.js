@@ -1,10 +1,11 @@
-let addIngredientsBtn = document.getElementById('addIngredientsBtn');
-let ingredientList = document.querySelector('.ingredientList');
-let ingredeintDiv = document.querySelectorAll('.ingredeintDiv')[0];
+const addIngredientsBtn = document.getElementById('addIngredientsBtn');
+const ingredientList = document.querySelector('.ingredientList');
+const ingredientDiv = document.querySelectorAll('.ingredientDiv')[0];
 
 addIngredientsBtn.addEventListener('click', function(){
-  let newIngredients = ingredeintDiv.cloneNode(true);
+  let newIngredients = ingredientDiv.cloneNode(true);
   let input = newIngredients.getElementsByTagName('input')[0];
   input.value = '';
   ingredientList.appendChild(newIngredients);
 });
+
